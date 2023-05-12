@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'applifting',
-        'USER' : '',
-        'PASSWORD' : '',
+        'USER' : 'postgres',
+        'PASSWORD' : 'Idefixa',
         'HOST' : 'localhost',
         'PORT' : '5432'
     }
