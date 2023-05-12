@@ -1,14 +1,10 @@
 from django.shortcuts import get_object_or_404
 from ninja import Router
-from .models import Product
-from .schemas import ProductInSchema, ProductOutSchema,AccessTokenSchema
+from .models import Product, Offer
+from .schemas import ProductInSchema, ProductOutSchema, OfferSchema
 from typing import List
-from .access_token import get_access_token
-import requests
-from django.contrib import admin
-from django.urls import path
+from uuid import UUID
 
-token = get_access_token()
 router = Router()
 
 @router.post('/', response=ProductOutSchema)
@@ -40,4 +36,14 @@ def delete_product(request, product_id: str):
     product.delete()
     return {"success": True}
 
+
+@router.get("offers/", response=List[OfferSchema])
+def list_offers(request):
+    offers = Offer.objects.all()
+    return offers
+
+@router.get("offers/{offer_id}", response=OfferSchema)
+def get_offer(request, offer_id:UUID ):
+    offer = get_object_or_404(Offer, id=offer_id)
+    return offer
 

@@ -1,3 +1,4 @@
-private.py
+.env
 venv
-migrations
+__pycache__
+producent_offers.py
