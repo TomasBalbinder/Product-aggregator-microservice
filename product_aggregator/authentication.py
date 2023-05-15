@@ -7,7 +7,7 @@ def get_access_token():
 
     headers = {
         "accept": "application/json",
-        "Bearer": "9c7dc481-a444-43e0-a262-3ae864df470c",
+        "Bearer": "token",
     }
     response = requests.post(url, headers=headers)
     json_data = response.json()
